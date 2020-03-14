@@ -19,11 +19,6 @@ public class ShoppingCartMovement : MonoBehaviour
 	{
 		if (input is PlayerInput)
 			agent.nextPosition = transform.position;
-
-		if (Input.GetKeyDown(KeyCode.Space))
-		{
-			input.PickItem();
-		}
 	}
 
 	private void FixedUpdate()

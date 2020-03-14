@@ -8,6 +8,8 @@ public abstract class ShoppingCartInput : MonoBehaviour
 
 	public float MaxVelocityDelta => maxVelocityDelta;
 
+	public abstract void Init();
+
 	public abstract float MoveSpeed();
 
 	public abstract float TurnSpeed();

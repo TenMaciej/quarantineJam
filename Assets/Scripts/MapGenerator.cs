@@ -54,12 +54,23 @@ public class MapGenerator : MonoBehaviour
 
 	private void SpawnProduct(Shelf[] randomizedShelves)
 	{
+		int halfOfShelves = Mathf.CeilToInt(shelves.Length * 0.5f);
 		for (int i = 0; i < shelves.Length; i++)
 		{
 			if (i < shelvesWithPaperCount)
 				randomizedShelves[i].SpawnProduct(productPrefabs[0]);
 			else
-				randomizedShelves[i].SpawnProduct(productPrefabs[1]);
+			{
+				if (i > halfOfShelves)
+				{
+					randomizedShelves[i].SpawnProduct(productPrefabs[1]);
+				}
+				else
+				{
+					randomizedShelves[i].SpawnProduct(productPrefabs[2]);
+				}
+			}
+
 		}
 	}
 }

@@ -486,11 +486,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matchDuration: 60
-  player: {fileID: 0}
-  enemy: []
-  playerSpawn: {fileID: 1055446134}
-  enemySpawn:
+  shoppingCarts: []
+  shoppingCartSpawners:
   - {fileID: 2024495031}
+  - {fileID: 1055446134}
   - {fileID: 830045887}
   - {fileID: 149636282}
 --- !u!4 &139894686
@@ -550,8 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19e696d798795a458ba9b325defcaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 0}
-  enemyPrefab: {fileID: 8944925501569047675, guid: 1522e9547f4da314c89d5da8e020bf31,
+  shoppingCartPrefab: {fileID: 8944925501569047675, guid: 1522e9547f4da314c89d5da8e020bf31,
     type: 3}
 --- !u!1 &151942616
 GameObject:
@@ -645,6 +643,7 @@ MonoBehaviour:
   productPrefabs:
   - {fileID: -2594948100586060502, guid: 778ae590e92dd274fb19eacb105fd2a0, type: 3}
   - {fileID: 4476677143875373255, guid: 329e59b70da0ea04baaf6c992e7c1b60, type: 3}
+  - {fileID: 4409725490449725978, guid: 8ee53fa8a3c251f4892aa7c3e650a9b8, type: 3}
 --- !u!4 &151942618
 Transform:
   m_ObjectHideFlags: 0
@@ -2771,8 +2770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19e696d798795a458ba9b325defcaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 0}
-  enemyPrefab: {fileID: 8944925501569047675, guid: 1522e9547f4da314c89d5da8e020bf31,
+  shoppingCartPrefab: {fileID: 8944925501569047675, guid: 1522e9547f4da314c89d5da8e020bf31,
     type: 3}
 --- !u!4 &844371622 stripped
 Transform:
@@ -3110,8 +3108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19e696d798795a458ba9b325defcaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 1862440133, guid: 16e556036415b504caa7e58dcce56d2c, type: 3}
-  enemyPrefab: {fileID: 0}
+  shoppingCartPrefab: {fileID: 1862440133, guid: 16e556036415b504caa7e58dcce56d2c,
+    type: 3}
 --- !u!1 &1075937395
 GameObject:
   m_ObjectHideFlags: 0
@@ -5527,8 +5525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19e696d798795a458ba9b325defcaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 0}
-  enemyPrefab: {fileID: 8944925501569047675, guid: 1522e9547f4da314c89d5da8e020bf31,
+  shoppingCartPrefab: {fileID: 8944925501569047675, guid: 1522e9547f4da314c89d5da8e020bf31,
     type: 3}
 --- !u!1 &2031372623
 GameObject:

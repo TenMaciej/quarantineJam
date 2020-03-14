@@ -5,6 +5,19 @@ public class PlayerInput : ShoppingCartInput
 {
 	[SerializeField] private ToiletPaperDetector detector;
 
+	public override void Init()
+	{
+		Camera.main.GetComponent<BrainHelper>().AttachCam(transform);
+	}
+
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			PickItem();
+		}
+	}
+
 	public override float MoveSpeed()
 	{
 		return moveSpeed * Input.GetAxis("Vertical");

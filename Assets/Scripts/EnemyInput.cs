@@ -59,7 +59,11 @@ public class EnemyInput : ShoppingCartInput
 		{
 			FinishedPath();
 		}
+	}
 
+	public override void Init()
+	{
+		return;
 	}
 
 	public override float MoveSpeed()
