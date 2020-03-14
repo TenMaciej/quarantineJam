@@ -14,6 +14,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Detail_Mat
     second: {fileID: 2100000, guid: 5175a71e1e9ee8149bac3f458476f1c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wheel_Inner_Mat
+    second: {fileID: 2100000, guid: 15883d94cbd4a4d45a8563d8319f2c51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wheel_Rubber_Mat
+    second: {fileID: 2100000, guid: 61fbf167334a8e3429db2ffebdd7c4e3, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

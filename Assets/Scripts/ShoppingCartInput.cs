@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 
-public class ShoppingCartInput : MonoBehaviour
+public abstract class ShoppingCartInput : MonoBehaviour
 {
-	[SerializeField] private float moveSpeed;
-	[SerializeField] private float turnSpeed;
-	[SerializeField] private float tiltSpeed;
+	[SerializeField] protected float moveSpeed;
+	[SerializeField] protected float turnSpeed;
 
-	public float MoveSpeed => moveSpeed;
+	public abstract float MoveSpeed();
 
-	public float TurnSpeed => turnSpeed;
+	public abstract float TurnSpeed();
 
-	public float TiltSpeed => tiltSpeed;
+	public abstract void PickItem();
 }
