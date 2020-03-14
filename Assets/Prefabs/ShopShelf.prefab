@@ -1034,8 +1034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f603a932de667a48a5749b11d2a988d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toiletRollPrefab: {fileID: 5140640856227474634, guid: 38cf67ea2e80d4f47a51ec04b457f648,
-    type: 3}
+  productPrefabs: []
   productSpawns:
   - {fileID: 5782188989411068671}
   - {fileID: 4020250124878277188}
@@ -1105,7 +1104,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4418888721261111443}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 50
   m_Drag: 50
   m_AngularDrag: 10
   m_UseGravity: 1

@@ -5,16 +5,23 @@ public class Shelf : MonoBehaviour
 	[SerializeField] private Product[] productPrefabs;
 	[SerializeField] private Transform[] productSpawns;
 
-	private void Start()
+	public void SpawnProduct(Product product)
 	{
 		foreach (Transform productSpawn in productSpawns)
 		{
 			bool spawn = Random.Range(0, 2) > 0;
 			if (spawn)
-			{
-				int randomProduct = Random.Range(0, productPrefabs.Length);
-				Instantiate(productPrefabs[randomProduct], productSpawn.position, Quaternion.identity);
-			}
+				Instantiate(product, productSpawn.position, Quaternion.identity);
 		}
+		CleanShelf();
+	}
+
+	public void CleanShelf()
+	{
+		foreach (Transform child in transform)
+		{
+			Destroy(child.gameObject);
+		}
+		productSpawns = new Transform[0];
 	}
 }

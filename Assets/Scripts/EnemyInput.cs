@@ -7,8 +7,10 @@ public class EnemyInput : MonoBehaviour
 	[SerializeField] private NavMeshAgent agent;
 	[SerializeField] private ToiletPaperDetector detector;
 	[SerializeField] private Rigidbody rigid;
+	[SerializeField] private float changeDestinationTimer;
 
 	private Camera camera;
+	private float timerToChangeDestination;
 
 	public void SetDestination(Vector3 destination)
 	{
@@ -24,14 +26,14 @@ public class EnemyInput : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if (timerToChangeDestination > 0)
 		{
-			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-			if (Physics.Raycast(ray, out RaycastHit hit))
-			{
-				if (hit.collider.CompareTag("Ground"))
-					SetDestination(hit.point);
-			}
+			timerToChangeDestination -= Time.deltaTime;
+		}
+		else
+		{
+			timerToChangeDestination = changeDestinationTimer;
+			FinishedPath();
 		}
 
 		if (detector.CanPick())
@@ -46,18 +48,22 @@ public class EnemyInput : MonoBehaviour
 		dir.Normalize();
 		dir.y = 0;
 
-		if (agent.velocity.magnitude >= agent.stoppingDistance)
+		if (Vector3.Distance(transform.position, agent.destination) >= agent.stoppingDistance)
 		{
-			float singleStep = 2f * Time.fixedDeltaTime;
+			float singleStep = 3f * Time.fixedDeltaTime;
 			Vector3 newDir = Vector3.RotateTowards(transform.forward, dir, singleStep, 0f);
 			rigid.MoveRotation(Quaternion.LookRotation(newDir));
+		}
+		else
+		{
+			FinishedPath();
 		}
 
 		Vector3 targetVelocity = transform.forward * agent.velocity.magnitude;
 		Vector3 velocity = rigid.velocity;
 		Vector3 deltaVel = (targetVelocity - velocity);
-		deltaVel.x = Mathf.Clamp(deltaVel.x, -10f, 10f);
-		deltaVel.z = Mathf.Clamp(deltaVel.z, -10f, 10f);
+		deltaVel.x = Mathf.Clamp(deltaVel.x, -1f, 1f);
+		deltaVel.z = Mathf.Clamp(deltaVel.z, -1f, 1f);
 		deltaVel.y = 0;
 
 		rigid.AddForce(deltaVel, ForceMode.VelocityChange);
@@ -72,5 +78,14 @@ public class EnemyInput : MonoBehaviour
 		Transform toiletRoll = detector.nearToiletPaperColliders[0].transform;
 		toiletRoll.SetParent(transform);
 		toiletRoll.DOLocalMove(Vector3.up, 0.2f);
+	}
+
+	private void FinishedPath()
+	{
+		float randomX = Random.Range(-20f, 20f);
+		float randomY = Random.Range(-20f, 20f);
+
+		Vector3 destination = new Vector3(randomX, 0, randomY);
+		SetDestination(destination);
 	}
 }
