@@ -34,9 +34,6 @@ public class EnemyInput : MonoBehaviour
 			}
 		}
 
-		Debug.DrawRay(transform.position, agent.velocity, Color.magenta);
-
-
 		if (detector.CanPick())
 		{
 			PickItem();
@@ -45,21 +42,26 @@ public class EnemyInput : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (agent.velocity != Vector3.zero)
+		Vector3 dir = agent.nextPosition - transform.position;
+		dir.Normalize();
+		dir.y = 0;
+
+		if (agent.velocity.magnitude >= agent.stoppingDistance)
 		{
-			rigid.MoveRotation(Quaternion.LookRotation(agent.velocity, Vector3.up));
+			float singleStep = 2f * Time.fixedDeltaTime;
+			Vector3 newDir = Vector3.RotateTowards(transform.forward, dir, singleStep, 0f);
+			rigid.MoveRotation(Quaternion.LookRotation(newDir));
 		}
 
-
-		Vector3 targetVelocity = agent.velocity;
+		Vector3 targetVelocity = transform.forward * agent.velocity.magnitude;
 		Vector3 velocity = rigid.velocity;
 		Vector3 deltaVel = (targetVelocity - velocity);
-		deltaVel.x = Mathf.Clamp(deltaVel.x, -5f, 5f);
-		deltaVel.z = Mathf.Clamp(deltaVel.z, -5f, 5f);
+		deltaVel.x = Mathf.Clamp(deltaVel.x, -10f, 10f);
+		deltaVel.z = Mathf.Clamp(deltaVel.z, -10f, 10f);
 		deltaVel.y = 0;
 
 		rigid.AddForce(deltaVel, ForceMode.VelocityChange);
-		agent.nextPosition = transform.position;
+		agent.nextPosition = transform.position + transform.forward * 0.1f;
 	}
 
 	public void PickItem()
