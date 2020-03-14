@@ -6,6 +6,7 @@ public class EnemyInput : MonoBehaviour
 {
 	[SerializeField] private NavMeshAgent agent;
 	[SerializeField] private ToiletPaperDetector detector;
+	[SerializeField] private Rigidbody rigid;
 
 	private Camera camera;
 
@@ -17,6 +18,8 @@ public class EnemyInput : MonoBehaviour
 	private void Start()
 	{
 		camera = Camera.main;
+		agent.updatePosition = false;
+		agent.updateRotation = false;
 	}
 
 	private void Update()
@@ -31,10 +34,32 @@ public class EnemyInput : MonoBehaviour
 			}
 		}
 
+		Debug.DrawRay(transform.position, agent.velocity, Color.magenta);
+
+
 		if (detector.CanPick())
 		{
 			PickItem();
 		}
+	}
+
+	private void FixedUpdate()
+	{
+		if (agent.velocity != Vector3.zero)
+		{
+			rigid.MoveRotation(Quaternion.LookRotation(agent.velocity, Vector3.up));
+		}
+
+
+		Vector3 targetVelocity = agent.velocity;
+		Vector3 velocity = rigid.velocity;
+		Vector3 deltaVel = (targetVelocity - velocity);
+		deltaVel.x = Mathf.Clamp(deltaVel.x, -5f, 5f);
+		deltaVel.z = Mathf.Clamp(deltaVel.z, -5f, 5f);
+		deltaVel.y = 0;
+
+		rigid.AddForce(deltaVel, ForceMode.VelocityChange);
+		agent.nextPosition = transform.position;
 	}
 
 	public void PickItem()
