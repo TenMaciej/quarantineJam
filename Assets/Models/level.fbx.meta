@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bd6027914f97f5542aea478ba4a3ada8
+guid: ff6a7b48562984f4c8311c78d07032e1
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ShopShelf_Mat
-    second: {fileID: 2100000, guid: 78646b597384c45419a7ad0f3bfed5ba, type: 2}
+      name: FloorDetail_Mat
+    second: {fileID: 2100000, guid: 3984fc08af66bd74cb3b018b5ae339e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FloorDetail_Secondary_Mat
+    second: {fileID: 2100000, guid: d261ff0f8abc7184da909947fe97da9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_Mat
+    second: {fileID: 2100000, guid: 4281849eb32a88943b88cbb71d881ad3, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

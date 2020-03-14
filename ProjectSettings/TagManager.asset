@@ -15,8 +15,8 @@ TagManager:
   - 
   - 
   - ShoppingCart
-  - ToiletRoll
-  - InsideToiletRoll
+  - Product
+  - ProductInside
   - ShoppingCartCargo
   - 
   - 

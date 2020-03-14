@@ -21,19 +21,4 @@ public class Product : MonoBehaviour
 			gameObject.layer = productInsideLayer;
 		}
 	}
-
-	private void OnTriggerStay(Collider other)
-	{
-		if (other.gameObject.layer == LayerMask.NameToLayer("ShoppingCart"))
-		{
-			if (transform.parent == other.transform)
-			{
-				if (gameObject.layer == productInsideLayer)
-					return;
-
-				gameObject.layer = productInsideLayer;
-			}
-			transform.SetParent(other.transform);
-		}
-	}
 }

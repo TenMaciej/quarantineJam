@@ -1,18 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Cinemachine;
 using UnityEngine;
 
 public class BrainHelper : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] private CinemachineVirtualCamera mainVirtualCamera;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void AttachCam(Transform player)
+	{
+		mainVirtualCamera.Follow = player;
+		mainVirtualCamera.LookAt = player;
+	}
 }

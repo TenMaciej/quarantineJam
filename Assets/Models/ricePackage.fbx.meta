@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cde01346f67adcf49855b044964dd4ca
+guid: 666af69dab3882044afc0bc94e36c382
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,13 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ShelfDetail_Mat
-    second: {fileID: 2100000, guid: 5a56312885886f9459bceff394741910, type: 2}
+      name: OpenPack_Mat
+    second: {fileID: 2100000, guid: c8315faf7d4433542a21175aa60d53a6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ShopShelf_Mat
-    second: {fileID: 2100000, guid: 78646b597384c45419a7ad0f3bfed5ba, type: 2}
+      name: RiceDetail_Mat
+    second: {fileID: 2100000, guid: f021060dac08bfd42ad271aa0937f9e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RiceDetail_Secondary_Mat
+    second: {fileID: 2100000, guid: d38157fa38c989047bdb30369274a3e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RicePackage_Mat
+    second: {fileID: 2100000, guid: 32812a2fd51ed7848a1469558983765d, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

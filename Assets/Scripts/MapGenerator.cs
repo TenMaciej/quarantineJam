@@ -13,18 +13,21 @@ public class MapGenerator : MonoBehaviour
 		Shelf[] randomizedShelves = shelves;
 		System.Random rng = new System.Random();
 		rng.Shuffle(randomizedShelves);
-		for (int i = 0; i < shelves.Length; i++)
-		{
-			if (i < shelvesWithPaperCount)
-				randomizedShelves[i].SpawnProduct(productPrefabs[0]);
-			else
-				randomizedShelves[i].CleanShelf();
-		}
 
-		foreach (Transform stack in stacks)
+		SpawnProduct(randomizedShelves);
+		shelves = new Shelf[0];
+
+		Transform[] randomizeStacks = stacks;
+		rng = new System.Random();
+		rng.Shuffle(randomizeStacks);
+		for (int i = 0; i < stacks.Length; i++)
 		{
-			SpawnStack(productPrefabs[0], 5, stack.position);
+			if (i < standsWithPaperCount)
+				SpawnStack(productPrefabs[0], 5, stacks[i].position);
+			else
+				Destroy(stacks[i].gameObject);
 		}
+		stacks = new Transform[0];
 	}
 
 	public void SpawnStack(Product product, int baseSize, Vector3 stackPosition)
@@ -46,6 +49,17 @@ public class MapGenerator : MonoBehaviour
 					Instantiate(product, pos, Quaternion.identity);
 				}
 			}
+		}
+	}
+
+	private void SpawnProduct(Shelf[] randomizedShelves)
+	{
+		for (int i = 0; i < shelves.Length; i++)
+		{
+			if (i < shelvesWithPaperCount)
+				randomizedShelves[i].SpawnProduct(productPrefabs[0]);
+			else
+				randomizedShelves[i].SpawnProduct(productPrefabs[1]);
 		}
 	}
 }

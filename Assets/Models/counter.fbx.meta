@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cde01346f67adcf49855b044964dd4ca
+guid: 9f57a59b133b39f4d87287a445441c2d
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,13 +7,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ShelfDetail_Mat
-    second: {fileID: 2100000, guid: 5a56312885886f9459bceff394741910, type: 2}
+      name: CounterDetail_Mat
+    second: {fileID: 2100000, guid: 01fe55c5b95e44841b79fd3ac4ae5cc9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ShopShelf_Mat
-    second: {fileID: 2100000, guid: 78646b597384c45419a7ad0f3bfed5ba, type: 2}
+      name: CounterGlass_Mat
+    second: {fileID: 2100000, guid: da58fd76f95375a44ac180cb708a707f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CounterRoller_Mat
+    second: {fileID: 2100000, guid: 3bba46f6e42ba444da00abf8aa8fbe58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Counter_Mat
+    second: {fileID: 2100000, guid: 78385a3012c75e141b2728cc3dc19a1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Scaner_Mat
+    second: {fileID: 2100000, guid: 54ad74513511a8f438e9497a5f90908c, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

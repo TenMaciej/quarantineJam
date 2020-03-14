@@ -211,7 +211,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471725614962531418}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 738b85d96c2c07c48983585ac3d2aa69, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -839,14 +839,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8518762359882509569}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 10
+  m_Drag: 1
+  m_AngularDrag: 0.1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &2163827236414702666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -880,6 +880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   turnSpeed: 100
+  maxVelocityDelta: 0.5
   detector: {fileID: 1862440138}
 --- !u!195 &1862440137
 NavMeshAgent:
@@ -922,6 +923,7 @@ MonoBehaviour:
   toiletPaperInsideLayer:
     serializedVersion: 2
     m_Bits: 1024
+  pickCooldown: 0
   nearToiletPaperColliders: []
 --- !u!65 &1862440135
 BoxCollider:
@@ -931,8 +933,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8518762359882509569}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.7, z: 1}
-  m_Center: {x: 0, y: 0.7, z: 0}
+  m_Size: {x: 0.65, y: 0.3, z: 0.97}
+  m_Center: {x: 0, y: 0.15, z: 0}
