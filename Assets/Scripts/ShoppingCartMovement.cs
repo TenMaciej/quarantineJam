@@ -32,8 +32,14 @@ public class ShoppingCartMovement : MonoBehaviour
 
 	private void Move(float moveSpeed)
 	{
-		Vector3 moveMultiply = transform.forward * (moveSpeed * Time.fixedDeltaTime);
-		rigid.MovePosition(moveMultiply + transform.position);
+		Vector3 targetVelocity = transform.forward * moveSpeed;
+		Vector3 velocity = rigid.velocity;
+		Vector3 deltaVel = (targetVelocity - velocity);
+		deltaVel.x = Mathf.Clamp(deltaVel.x, -input.MaxVelocityDelta, input.MaxVelocityDelta);
+		deltaVel.z = Mathf.Clamp(deltaVel.z, -input.MaxVelocityDelta, input.MaxVelocityDelta);
+		deltaVel.y = 0;
+
+		rigid.AddForce(deltaVel, ForceMode.VelocityChange);
 	}
 
 	private void Turn(float turnSpeed)
