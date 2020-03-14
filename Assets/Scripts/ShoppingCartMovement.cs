@@ -17,7 +17,9 @@ public class ShoppingCartMovement : MonoBehaviour
 
 	private void Update()
 	{
-		agent.nextPosition = transform.position;
+		if (input is PlayerInput)
+			agent.nextPosition = transform.position;
+
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
 			input.PickItem();
@@ -32,6 +34,9 @@ public class ShoppingCartMovement : MonoBehaviour
 
 	private void Move(float moveSpeed)
 	{
+		if (moveSpeed == 0)
+			return;
+
 		Vector3 targetVelocity = transform.forward * moveSpeed;
 		Vector3 velocity = rigid.velocity;
 		Vector3 deltaVel = (targetVelocity - velocity);
@@ -44,6 +49,9 @@ public class ShoppingCartMovement : MonoBehaviour
 
 	private void Turn(float turnSpeed)
 	{
+		if (turnSpeed == 0)
+			return;
+
 		float turnMultiply = turnSpeed * Time.fixedDeltaTime;
 		Vector3 eulerRotation = new Vector3(0, turnMultiply + transform.rotation.eulerAngles.y, 0);
 		Quaternion deltaRotation = Quaternion.Euler(eulerRotation);

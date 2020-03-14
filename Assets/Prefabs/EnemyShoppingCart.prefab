@@ -645,6 +645,7 @@ GameObject:
   - component: {fileID: 3192074979869195723}
   - component: {fileID: 8944925501569047675}
   - component: {fileID: 1770089509}
+  - component: {fileID: 5365818580552823256}
   m_Layer: 8
   m_Name: EnemyShoppingCart
   m_TagString: Untagged
@@ -755,6 +756,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd81ecd5c6174c348b52ee95d3700c64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 1.2
+  turnSpeed: 5
+  maxVelocityDelta: 1
   agent: {fileID: 3192074979869195720}
   detector: {fileID: 3192074979869195723}
   rigid: {fileID: 7934656785346072915}
@@ -772,6 +776,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.65, y: 0.3, z: 0.97}
   m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!114 &5365818580552823256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6517903225063113728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16c24d7af57e814dad55318f7b1da22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 8944925501569047675}
+  rigid: {fileID: 7934656785346072915}
+  frontWheels: []
+  rearWheels: []
+  agent: {fileID: 3192074979869195720}
 --- !u!1 &7393304536163903113
 GameObject:
   m_ObjectHideFlags: 0

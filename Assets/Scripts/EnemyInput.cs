@@ -1,8 +1,9 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
-public class EnemyInput : MonoBehaviour
+public class EnemyInput : ShoppingCartInput
 {
 	[SerializeField] private NavMeshAgent agent;
 	[SerializeField] private ToiletPaperDetector detector;
@@ -50,8 +51,8 @@ public class EnemyInput : MonoBehaviour
 
 		if (Vector3.Distance(transform.position, agent.destination) >= agent.stoppingDistance)
 		{
-			float singleStep = 3f * Time.fixedDeltaTime;
-			Vector3 newDir = Vector3.RotateTowards(transform.forward, dir, singleStep, 0f);
+			float singleStep = turnSpeed * Time.fixedDeltaTime;
+			Vector3 newDir = Vector3.Lerp(transform.forward, dir, singleStep);
 			rigid.MoveRotation(Quaternion.LookRotation(newDir));
 		}
 		else
@@ -59,18 +60,20 @@ public class EnemyInput : MonoBehaviour
 			FinishedPath();
 		}
 
-		Vector3 targetVelocity = transform.forward * agent.velocity.magnitude;
-		Vector3 velocity = rigid.velocity;
-		Vector3 deltaVel = (targetVelocity - velocity);
-		deltaVel.x = Mathf.Clamp(deltaVel.x, -1f, 1f);
-		deltaVel.z = Mathf.Clamp(deltaVel.z, -1f, 1f);
-		deltaVel.y = 0;
-
-		rigid.AddForce(deltaVel, ForceMode.VelocityChange);
-		agent.nextPosition = transform.position + transform.forward * 0.1f;
 	}
 
-	public void PickItem()
+	public override float MoveSpeed()
+	{
+		agent.nextPosition = transform.position + transform.forward * 0.1f;
+		return agent.velocity.magnitude * moveSpeed;
+	}
+
+	public override float TurnSpeed()
+	{
+		return 0;
+	}
+
+	public override void PickItem()
 	{
 		if (detector.nearToiletPaperColliders == null || detector.nearToiletPaperColliders.Length <= 0)
 			return;
