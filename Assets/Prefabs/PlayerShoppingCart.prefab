@@ -91,6 +91,11 @@ GameObject:
   - component: {fileID: 6915396117176855671}
   - component: {fileID: 4878048796725279475}
   - component: {fileID: 5938456243434064289}
+  - component: {fileID: 217912378}
+  - component: {fileID: 217912379}
+  - component: {fileID: 217912380}
+  - component: {fileID: 217912381}
+  - component: {fileID: 217912382}
   m_Layer: 0
   m_Name: ShoppingCart
   m_TagString: Untagged
@@ -160,6 +165,71 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &217912378
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471725614962531418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.4, z: 1}
+  m_Center: {x: -0.35, y: 0.65, z: 0}
+--- !u!65 &217912379
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471725614962531418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.65, y: 0.4, z: 0.1}
+  m_Center: {x: 0, y: 0.65, z: 0.5}
+--- !u!65 &217912380
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471725614962531418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.65, y: 0.4, z: 0.1}
+  m_Center: {x: 0, y: 0.65, z: -0.5}
+--- !u!65 &217912381
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471725614962531418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.65, y: 0.1, z: 1}
+  m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!65 &217912382
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471725614962531418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.4, z: 1}
+  m_Center: {x: 0.35, y: 0.65, z: 0}
 --- !u!1 &1803284576505758700
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,6 +804,7 @@ GameObject:
   - component: {fileID: 1862440133}
   - component: {fileID: 1862440137}
   - component: {fileID: 1862440138}
+  - component: {fileID: 1862440135}
   m_Layer: 8
   m_Name: PlayerShoppingCart
   m_TagString: Untagged
@@ -848,4 +919,20 @@ MonoBehaviour:
   toiletPaperLayer:
     serializedVersion: 2
     m_Bits: 512
+  toiletPaperInsideLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   nearToiletPaperColliders: []
+--- !u!65 &1862440135
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518762359882509569}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.7, z: 1}
+  m_Center: {x: 0, y: 0.7, z: 0}

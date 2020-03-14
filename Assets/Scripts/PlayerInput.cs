@@ -20,12 +20,11 @@ public class PlayerInput : ShoppingCartInput
 		if (detector.nearToiletPaperColliders == null || detector.nearToiletPaperColliders.Length <= 0)
 			return;
 
-
-		Transform toiletRoll = detector.nearToiletPaperColliders[0].transform;
-		toiletRoll.SetParent(transform);
-		Rigidbody toiletRigidbody = toiletRoll.GetComponent<Rigidbody>();
-		toiletRoll.gameObject.layer = LayerMask.NameToLayer("Default");
-		toiletRigidbody.isKinematic = true;
-		toiletRoll.DOLocalMove(Vector3.up, 0.2f).OnComplete(() => toiletRigidbody.isKinematic = false);
+		if (detector.CanPick())
+		{
+			Transform toiletRoll = detector.nearToiletPaperColliders[0].transform;
+			toiletRoll.SetParent(transform);
+			toiletRoll.DOLocalMove(Vector3.up, 0.2f);
+		}
 	}
 }

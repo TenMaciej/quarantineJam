@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyInput : MonoBehaviour
 {
 	[SerializeField] private NavMeshAgent agent;
+	[SerializeField] private ToiletPaperDetector detector;
+
 	private Camera camera;
 
 	public void SetDestination(Vector3 destination)
@@ -27,5 +30,20 @@ public class EnemyInput : MonoBehaviour
 					SetDestination(hit.point);
 			}
 		}
+
+		if (detector.CanPick())
+		{
+			PickItem();
+		}
+	}
+
+	public void PickItem()
+	{
+		if (detector.nearToiletPaperColliders == null || detector.nearToiletPaperColliders.Length <= 0)
+			return;
+
+		Transform toiletRoll = detector.nearToiletPaperColliders[0].transform;
+		toiletRoll.SetParent(transform);
+		toiletRoll.DOLocalMove(Vector3.up, 0.2f);
 	}
 }
