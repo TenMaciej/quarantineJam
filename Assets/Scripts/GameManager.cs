@@ -71,20 +71,14 @@ public class GameManager : MonoBehaviour
 			brainHelper.AttachCam(shoppingCarts[2].transform);
 			gameData.playerCount = 1;
 		}
-
 		else
 		{
 			for (int i = 0; i < brainHelper.cameras.Length; i++)
 			{
-				if (i < gameData.playerCount)
-				{
-					brainHelper.cameras[i].rect = screenRectData.variants[gameData.playerCount - 1].screenRect[i];
-				}
-				else
-				{
-					brainHelper.cameras[i].gameObject.SetActive(false);
-					brainHelper.virtualCameras[i].gameObject.SetActive(false);
-				}
+				brainHelper.cameras[i].rect = screenRectData.variants[gameData.playerCount - 1].screenRect[i];
+				if (i < gameData.playerCount) continue;
+				brainHelper.cameras[i].gameObject.SetActive(false);
+				brainHelper.virtualCameras[i].gameObject.SetActive(false);
 			}
 		}
 

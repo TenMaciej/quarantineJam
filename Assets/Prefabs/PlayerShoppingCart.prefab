@@ -19785,10 +19785,12 @@ MonoBehaviour:
   turnSpeed: 100
   maxVelocityDelta: 0.5
   cartRenderer: {fileID: 5938456243434064289}
+  rigid: {fileID: -4444746039316744110}
   colorName: 
   colorHex: 
   gatheredToiletRolls: 0
   detector: {fileID: 1862440138}
+  inputData: {fileID: 0}
 --- !u!195 &1862440137
 NavMeshAgent:
   m_ObjectHideFlags: 0

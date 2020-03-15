@@ -7,4 +7,5 @@ public class PlayerInputData : ScriptableObject
 	public string vertical;
 	public string action;
 	public int cameraId;
+	public float actionCooldown;
 }

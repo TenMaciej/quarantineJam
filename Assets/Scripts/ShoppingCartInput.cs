@@ -7,6 +7,7 @@ public abstract class ShoppingCartInput : MonoBehaviour
 	[SerializeField] protected float turnSpeed;
 	[SerializeField] protected float maxVelocityDelta;
 	[SerializeField] protected Renderer cartRenderer;
+	[SerializeField] protected Rigidbody rigid;
 
 	public string colorName;
 	public string colorHex;

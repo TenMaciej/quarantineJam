@@ -6,6 +6,7 @@ public class PlayerInput : ShoppingCartInput
 	[SerializeField] private ToiletPaperDetector detector;
 	private UnityAction pickUpCallback;
 	public PlayerInputData inputData;
+	public float actionCooldown;
 
 	public override void Init(UnityAction firstRollCallback, string playerColorHex, string playerColorName)
 	{
@@ -23,6 +24,15 @@ public class PlayerInput : ShoppingCartInput
 	private void Update()
 	{
 		PickItem();
+		if (actionCooldown > 0)
+		{
+			actionCooldown -= Time.deltaTime;
+		}
+		if (Input.GetButtonDown(inputData.action) && actionCooldown <= 0)
+		{
+			actionCooldown = inputData.actionCooldown;
+			rigid.AddForce(transform.forward * 200f, ForceMode.Impulse);
+		}
 	}
 
 	public override float MoveSpeed()

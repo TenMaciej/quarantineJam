@@ -7,12 +7,12 @@ public class EnemyInput : ShoppingCartInput
 {
 	[SerializeField] private NavMeshAgent agent;
 	[SerializeField] private ToiletPaperDetector detector;
-	[SerializeField] private Rigidbody rigid;
 	[SerializeField] private float changeDestinationTimer;
 
 	private UnityAction pickUpCallback;
 	private Camera camera;
 	private float timerToChangeDestination;
+	private float randomDashTimer;
 
 	public void SetDestination(Vector3 destination)
 	{
@@ -24,6 +24,7 @@ public class EnemyInput : ShoppingCartInput
 		camera = Camera.main;
 		agent.updatePosition = false;
 		agent.updateRotation = false;
+		randomDashTimer = Random.Range(2f, 4f);
 	}
 
 	private void Update()
@@ -41,6 +42,12 @@ public class EnemyInput : ShoppingCartInput
 		if (detector.CanPick())
 		{
 			PickItem();
+		}
+
+		if (EnemyInFront() || RandomDash())
+		{
+			rigid.AddForce(transform.forward * 100f, ForceMode.Impulse);
+			randomDashTimer = Random.Range(2f, 4f);
 		}
 	}
 
@@ -67,7 +74,6 @@ public class EnemyInput : ShoppingCartInput
 		colorHex = playerColorHex;
 		colorName = playerColorName;
 		pickUpCallback = firstRollCallback;
-		return;
 	}
 
 	public override float MoveSpeed()
@@ -98,5 +104,29 @@ public class EnemyInput : ShoppingCartInput
 
 		Vector3 destination = new Vector3(randomX, 0, randomY);
 		SetDestination(destination);
+	}
+
+	private bool EnemyInFront()
+	{
+		Ray ray = new Ray(transform.position + Vector3.up * 0.05f, Vector3.forward * 3f);
+		if (Physics.Raycast(ray, out RaycastHit hit))
+		{
+			if (hit.collider.gameObject.GetComponent<ShoppingCartInput>())
+				return true;
+		}
+
+		return false;
+	}
+
+	private bool RandomDash()
+	{
+		if (randomDashTimer > 0)
+		{
+			randomDashTimer -= Time.deltaTime;
+			return false;
+		}
+
+		randomDashTimer = Random.Range(2f, 4f);
+		return true;
 	}
 }
