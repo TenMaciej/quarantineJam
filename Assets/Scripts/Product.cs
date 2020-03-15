@@ -2,15 +2,17 @@
 
 public class Product : MonoBehaviour
 {
-	[SerializeField] protected LayerMask productLayer;
-	[SerializeField] protected LayerMask productInsideLayer;
+	public Color color;
 
 	private void OnTriggerExit(Collider other)
 	{
 		if (other.gameObject.layer == LayerMask.NameToLayer("ShoppingCart"))
 		{
-			transform.SetParent(null);
-			gameObject.layer = productLayer;
+			if (gameObject.layer == LayerMask.NameToLayer("ProductInside"))
+			{
+				transform.SetParent(null);
+				gameObject.layer = LayerMask.NameToLayer("Product");
+			}
 		}
 	}
 
@@ -18,7 +20,11 @@ public class Product : MonoBehaviour
 	{
 		if (other.gameObject.layer == LayerMask.NameToLayer("ShoppingCart"))
 		{
-			gameObject.layer = productInsideLayer;
+			if (gameObject.layer == LayerMask.NameToLayer("Product"))
+			{
+				transform.SetParent(other.transform);
+				gameObject.layer = LayerMask.NameToLayer("ProductInside");
+			}
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
+using UnityEngine;
 
 public class ToiletPaperDetector : MonoBehaviour
 {
@@ -31,5 +32,14 @@ public class ToiletPaperDetector : MonoBehaviour
 		}
 
 		return false;
+	}
+
+	public void PickRoll()
+	{
+		Transform toiletRoll = nearToiletPaperColliders[0].transform;
+		toiletRoll.SetParent(transform);
+		Rigidbody toiletRigid = toiletRoll.GetComponent<Rigidbody>();
+		toiletRigid.isKinematic = false;
+		toiletRoll.DOLocalMove(Vector3.up * 0.5f, 0.2f).OnComplete(() => toiletRigid.isKinematic = false);
 	}
 }

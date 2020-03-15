@@ -1,6 +1,6 @@
-﻿using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class EnemyInput : ShoppingCartInput
@@ -10,6 +10,7 @@ public class EnemyInput : ShoppingCartInput
 	[SerializeField] private Rigidbody rigid;
 	[SerializeField] private float changeDestinationTimer;
 
+	private UnityAction pickUpCallback;
 	private Camera camera;
 	private float timerToChangeDestination;
 
@@ -61,8 +62,11 @@ public class EnemyInput : ShoppingCartInput
 		}
 	}
 
-	public override void Init()
+	public override void Init(UnityAction firstRollCallback, string playerColorHex, string playerColorName)
 	{
+		colorHex = playerColorHex;
+		colorName = playerColorName;
+		pickUpCallback = firstRollCallback;
 		return;
 	}
 
@@ -82,9 +86,9 @@ public class EnemyInput : ShoppingCartInput
 		if (detector.nearToiletPaperColliders == null || detector.nearToiletPaperColliders.Length <= 0)
 			return;
 
-		Transform toiletRoll = detector.nearToiletPaperColliders[0].transform;
-		toiletRoll.SetParent(transform);
-		toiletRoll.DOLocalMove(Vector3.up, 0.2f);
+		detector.PickRoll();
+		pickUpCallback?.Invoke();
+		pickUpCallback = null;
 	}
 
 	private void FinishedPath()

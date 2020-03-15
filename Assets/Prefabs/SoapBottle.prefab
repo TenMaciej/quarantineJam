@@ -128,7 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   productLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1
   productInsideLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1
+  color: {r: 0.38039216, g: 0.5803922, b: 1, a: 1}

@@ -2,11 +2,13 @@
 
 public class Shelf : MonoBehaviour
 {
-	[SerializeField] private Product[] productPrefabs;
 	[SerializeField] private Transform[] productSpawns;
 
 	public void SpawnProduct(Product product)
 	{
+		Renderer renderer = GetComponent<Renderer>();
+		renderer.material.SetColor("_BaseColor", product.color);
+
 		foreach (Transform productSpawn in productSpawns)
 		{
 			bool spawn = Random.Range(0, 2) > 0;

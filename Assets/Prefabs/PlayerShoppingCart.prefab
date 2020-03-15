@@ -176,7 +176,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.4, z: 1}
+  m_Size: {x: 0.1, y: 0.5, z: 1}
   m_Center: {x: -0.35, y: 0.65, z: 0}
 --- !u!65 &217912379
 BoxCollider:
@@ -189,7 +189,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.65, y: 0.4, z: 0.1}
+  m_Size: {x: 0.65, y: 0.7, z: 0.1}
   m_Center: {x: 0, y: 0.65, z: 0.5}
 --- !u!65 &217912380
 BoxCollider:
@@ -202,8 +202,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.65, y: 0.4, z: 0.1}
-  m_Center: {x: 0, y: 0.65, z: -0.5}
+  m_Size: {x: 0.65, y: 0.7, z: 0.2}
+  m_Center: {x: 0, y: 0.65, z: -0.55}
 --- !u!65 &217912381
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -211,7 +211,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471725614962531418}
-  m_Material: {fileID: 13400000, guid: 738b85d96c2c07c48983585ac3d2aa69, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -228,7 +228,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.4, z: 1}
+  m_Size: {x: 0.1, y: 0.5, z: 1}
   m_Center: {x: 0.35, y: 0.65, z: 0}
 --- !u!1 &1803284576505758700
 GameObject:
@@ -805,6 +805,7 @@ GameObject:
   - component: {fileID: 1862440137}
   - component: {fileID: 1862440138}
   - component: {fileID: 1862440135}
+  - component: {fileID: 2869131080969801211}
   m_Layer: 8
   m_Name: PlayerShoppingCart
   m_TagString: Untagged
@@ -828,6 +829,7 @@ Transform:
   - {fileID: 3186016794459847484}
   - {fileID: 2585022056972544594}
   - {fileID: 4977072442719492782}
+  - {fileID: 892448261763478447}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -881,6 +883,7 @@ MonoBehaviour:
   moveSpeed: 5
   turnSpeed: 100
   maxVelocityDelta: 0.5
+  cartRenderer: {fileID: 5938456243434064289}
   detector: {fileID: 1862440138}
 --- !u!195 &1862440137
 NavMeshAgent:
@@ -932,9 +935,66 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8518762359882509569}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 738b85d96c2c07c48983585ac3d2aa69, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.65, y: 0.3, z: 0.97}
   m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!65 &2869131080969801211
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518762359882509569}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.65, y: 0.5, z: 0.97}
+  m_Center: {x: 0, y: 0.66, z: 0}
+--- !u!1 &8644642813611549937
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 892448261763478447}
+  - component: {fileID: 1695621667372065342}
+  m_Layer: 11
+  m_Name: CartLid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &892448261763478447
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8644642813611549937}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4639799309055106834}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1695621667372065342
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8644642813611549937}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.65, y: 0.1, z: 1}
+  m_Center: {x: 0, y: 0.97, z: 0}

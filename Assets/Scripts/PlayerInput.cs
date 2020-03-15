@@ -1,13 +1,17 @@
-﻿using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerInput : ShoppingCartInput
 {
 	[SerializeField] private ToiletPaperDetector detector;
+	private UnityAction pickUpCallback;
 
-	public override void Init()
+	public override void Init(UnityAction firstRollCallback, string playerColorHex, string playerColorName)
 	{
+		colorHex = playerColorHex;
+		colorName = playerColorName;
 		Camera.main.GetComponent<BrainHelper>().AttachCam(transform);
+		pickUpCallback = firstRollCallback;
 	}
 
 	private void Update()
@@ -35,9 +39,9 @@ public class PlayerInput : ShoppingCartInput
 
 		if (detector.CanPick())
 		{
-			Transform toiletRoll = detector.nearToiletPaperColliders[0].transform;
-			toiletRoll.SetParent(transform);
-			toiletRoll.DOLocalMove(Vector3.up, 0.2f);
+			detector.PickRoll();
+			pickUpCallback?.Invoke();
+			pickUpCallback = null;
 		}
 	}
 }
