@@ -8,6 +8,9 @@ public class ShoppingCartMovement : MonoBehaviour
 	[SerializeField] private Transform[] frontWheels;
 	[SerializeField] private Transform[] rearWheels;
 	[SerializeField] private NavMeshAgent agent;
+	[SerializeField] private ParticleSystem[] wheelsParticle;
+
+	private ParticleSystem.EmissionModule emission;
 
 	private void Start()
 	{
@@ -30,7 +33,21 @@ public class ShoppingCartMovement : MonoBehaviour
 	private void Move(float moveSpeed)
 	{
 		if (moveSpeed == 0)
+		{
+			foreach (ParticleSystem system in wheelsParticle)
+			{
+				emission = system.emission;
+				emission.rateOverTime = 0;
+			}
 			return;
+		}
+
+
+		foreach (ParticleSystem system in wheelsParticle)
+		{
+			emission = system.emission;
+			emission.rateOverTime = rigid.velocity.magnitude * 10;
+		}
 
 		Vector3 targetVelocity = transform.forward * moveSpeed;
 		Vector3 velocity = rigid.velocity;

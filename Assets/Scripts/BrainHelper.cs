@@ -3,11 +3,18 @@ using UnityEngine;
 
 public class BrainHelper : MonoBehaviour
 {
-	[SerializeField] private CinemachineVirtualCamera mainVirtualCamera;
+	public CinemachineVirtualCamera[] virtualCameras;
+	public Camera[] cameras;
 
-	public void AttachCam(Transform player)
+	public void AttachCam(PlayerInput player)
 	{
-		mainVirtualCamera.Follow = player;
-		mainVirtualCamera.LookAt = player;
+		virtualCameras[player.inputData.cameraId].Follow = player.transform;
+		virtualCameras[player.inputData.cameraId].LookAt = player.transform;
+	}
+
+	public void AttachCam(Transform target)
+	{
+		virtualCameras[0].Follow = target;
+		virtualCameras[0].LookAt = target;
 	}
 }

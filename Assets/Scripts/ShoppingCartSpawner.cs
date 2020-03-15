@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class ShoppingCartSpawner : MonoBehaviour
 {
-	[SerializeField] private ShoppingCartInput shoppingCartPrefab;
 	[SerializeField] private BoxCollider counter;
 	[SerializeField] private Renderer counterRenderer;
 	[SerializeField] private Color color;
@@ -12,7 +11,7 @@ public class ShoppingCartSpawner : MonoBehaviour
 	private bool canFinishGame;
 	private ShoppingCartInput shoppingCart;
 
-	public ShoppingCartInput Spawn()
+	public ShoppingCartInput Spawn(ShoppingCartInput shoppingCartPrefab)
 	{
 		shoppingCart = Instantiate(shoppingCartPrefab, transform.position, Quaternion.Euler(Vector3.left));
 		shoppingCart.Init(CanReturnCallback, colorHex, colorName);

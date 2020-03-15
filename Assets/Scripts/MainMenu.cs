@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
 	[SerializeField] private GameObject creditsWindow;
+	[SerializeField] private TextMeshProUGUI playerCount;
+	[SerializeField] private GameManager gameManager;
 
 	public void Play()
 	{
@@ -24,5 +27,11 @@ public class MainMenu : MonoBehaviour
 	public void CloseCredits()
 	{
 		creditsWindow.SetActive(false);
+	}
+
+	public void ChangePlayerCount(float count)
+	{
+		playerCount.text = count.ToString();
+		gameManager.gameData.playerCount = Mathf.FloorToInt(count);
 	}
 }

@@ -12,11 +12,17 @@ public class GameManager : MonoBehaviour
 	private float timeElapsed;
 	private int shoppingCartReachedCount;
 	private bool gameOver;
+	public GameDataScriptable gameData;
 
 	[SerializeField] private TextMeshProUGUI timer;
 	[SerializeField] private GameObject outcomeWindow;
 	[SerializeField] private TextMeshProUGUI outcome;
 	[SerializeField] private ShoppingCartSpawner[] shoppingCartSpawners;
+	[SerializeField] private ShoppingCartInput playerPrefab;
+	[SerializeField] private ShoppingCartInput enemyPrefab;
+	[SerializeField] private PlayerInputData[] playerInputData;
+	[SerializeField] private PlayerScreenRectScriptable screenRectData;
+
 
 	private void Update()
 	{
@@ -37,15 +43,51 @@ public class GameManager : MonoBehaviour
 		if (outcomeWindow != null)
 			outcomeWindow.SetActive(false);
 		shoppingCarts = new ShoppingCartInput[shoppingCartSpawners.Length];
+		int spawnedPlayer = 0;
 		for (int i = 0; i < shoppingCartSpawners.Length; i++)
 		{
-			ShoppingCartInput shoppingCart = shoppingCartSpawners[i].Spawn();
+			ShoppingCartInput prefab = enemyPrefab;
+			if (SceneManager.GetActiveScene().name == "Shop")
+			{
+				if (spawnedPlayer < gameData.playerCount)
+				{
+					prefab = playerPrefab;
+					spawnedPlayer++;
+				}
+			}
+
+			ShoppingCartInput shoppingCart = shoppingCartSpawners[i].Spawn(prefab);
 			shoppingCarts[i] = shoppingCart;
 			shoppingCart.reachedCounterCallback = ReachedCounter;
+			if (shoppingCart is PlayerInput input)
+			{
+				input.SetInput(playerInputData[i]);
+			}
 		}
 
+		BrainHelper brainHelper = Camera.main.GetComponent<BrainHelper>();
 		if (SceneManager.GetActiveScene().name == "MainMenu")
-			Camera.main.GetComponent<BrainHelper>().AttachCam(shoppingCarts[2].transform);
+		{
+			brainHelper.AttachCam(shoppingCarts[2].transform);
+			gameData.playerCount = 1;
+		}
+
+		else
+		{
+			for (int i = 0; i < brainHelper.cameras.Length; i++)
+			{
+				if (i < gameData.playerCount)
+				{
+					brainHelper.cameras[i].rect = screenRectData.variants[gameData.playerCount - 1].screenRect[i];
+				}
+				else
+				{
+					brainHelper.cameras[i].gameObject.SetActive(false);
+					brainHelper.virtualCameras[i].gameObject.SetActive(false);
+				}
+			}
+		}
+
 	}
 
 	private void ReachedCounter(ShoppingCartInput shoppingCart)
