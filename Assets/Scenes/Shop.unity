@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -491,7 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6354c1bf8f58cb447986ec6e9349be7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matchDuration: 20
+  matchDuration: 60
   shoppingCarts: []
   gameData: {fileID: 11400000, guid: ed192b68c812dd544bdd953167f21815, type: 2}
   timer: {fileID: 1364272046}
