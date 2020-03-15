@@ -16,3 +16,4 @@ MonoBehaviour:
   vertical: Vertical3
   action: Fire4
   cameraId: 3
+  actionCooldown: 1

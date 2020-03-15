@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 	[SerializeField] private GameObject creditsWindow;
 	[SerializeField] private TextMeshProUGUI playerCount;
 	[SerializeField] private GameManager gameManager;
+	[SerializeField] private GameObject[] playerPanel;
 
 	public void Play()
 	{
@@ -33,5 +34,14 @@ public class MainMenu : MonoBehaviour
 	{
 		playerCount.text = count.ToString();
 		gameManager.gameData.playerCount = Mathf.FloorToInt(count);
+		foreach (GameObject panel in playerPanel)
+		{
+			panel.SetActive(false);
+		}
+
+		for (int i = 0; i < count; i++)
+		{
+			playerPanel[i].SetActive(true);
+		}
 	}
 }

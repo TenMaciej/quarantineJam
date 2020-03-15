@@ -19,6 +19,21 @@ MonoBehaviour:
       y: 0
       width: 1
       height: 1
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
   - screenRect:
     - serializedVersion: 2
       x: 0
@@ -30,6 +45,16 @@ MonoBehaviour:
       y: 0
       width: 0.5
       height: 1
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
   - screenRect:
     - serializedVersion: 2
       x: 0
@@ -46,6 +71,11 @@ MonoBehaviour:
       y: 0
       width: 0.5
       height: 0.5
+    - serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
   - screenRect:
     - serializedVersion: 2
       x: 0
